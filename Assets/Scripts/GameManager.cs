@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
      //   ammoText.text=gunAmmo.ToString();
-    //    vidasText.text=vidas.ToString();
+        vidasText.text=vidas.ToString();
+    }
+
+    public void LoseHealth(int heltToReduce)
+    {
+        vidas-=heltToReduce;
+        if (vidas <= 0)
+        {
+            SceneManager.LoadScene(
+                SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
