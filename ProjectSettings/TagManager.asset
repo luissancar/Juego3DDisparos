@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Destruir
+  - AmmoBox
   layers:
   - Default
   - TransparentFX

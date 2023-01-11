@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shot : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Shot : MonoBehaviour
     private AudioSource shotSource;
 
 
+    public TextMeshProUGUI textAmmo;
 
     private void Start()
     {
@@ -36,8 +38,12 @@ public class Shot : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (Time.time > shotRateTime)
+            if (Time.time > shotRateTime &&
+                GameManager.instance.gunAmmo > 0)
             {
+                GameManager.instance.gunAmmo--;
+                textAmmo.text = GameManager.instance.gunAmmo
+                    .ToString();
                 shotSource.PlayOneShot(shotSound);
                 GameObject newBullet = Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shotForce * Time.deltaTime,
