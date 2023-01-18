@@ -7,6 +7,7 @@ TagManager:
   - Destruir
   - AmmoBox
   - SueloMuerte
+  - enemyBullet
   layers:
   - Default
   - TransparentFX
