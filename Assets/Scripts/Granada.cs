@@ -13,9 +13,15 @@ public class Granada : MonoBehaviour
 
     public GameObject efectoExplosion;
 
+    //Sound
+    public AudioSource audioSource;
+    public AudioClip explosionClip;
+
     void Start()
     {
         countDown = delay;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,7 +53,13 @@ public class Granada : MonoBehaviour
                     transform.position, radius);
             }
         }
-        Destroy(gameObject);
+
+        audioSource.PlayOneShot(explosionClip);
+        gameObject.GetComponent<SphereCollider>().enabled=false;
+        gameObject.GetComponent<MeshRenderer>().enabled=false;
+
+
+        Destroy(gameObject,delay*2);
     }
 }
 
