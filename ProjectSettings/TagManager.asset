@@ -8,6 +8,7 @@ TagManager:
   - AmmoBox
   - SueloMuerte
   - enemyBullet
+  - weapon
   layers:
   - Default
   - TransparentFX
